@@ -382,6 +382,31 @@ function onRowPointerEnd() {
       <div class="game-list-row__cell game-list-row__cell--pills">
         <div class="game-list-row__pills">
           <RChip
+            v-for="l in (rom.metadatum?.genres ?? []).slice(0, PILLS_VISIBLE)"
+            :key="`genre-${l}`"
+            size="x-small"
+            variant="translucent"
+          >
+            {{ l }}
+          </RChip>
+          <RChip
+            v-if="(rom.metadatum?.genres?.length ?? 0) > PILLS_VISIBLE"
+            size="x-small"
+            variant="translucent"
+          >
+            +{{ (rom.metadatum.genres?.length ?? 0) - PILLS_VISIBLE }}
+          </RChip>
+        </div>
+        <RTooltip
+          v-if="(rom.metadatum?.genres?.length ?? 0) > PILLS_VISIBLE"
+          activator="parent"
+          :text="rom.metadatum?.genres?.join(', ')"
+          location="top"
+        />
+      </div>
+      <div class="game-list-row__cell game-list-row__cell--pills">
+        <div class="game-list-row__pills">
+          <RChip
             v-for="l in (rom.languages ?? []).slice(0, PILLS_VISIBLE)"
             :key="`lang-${l}`"
             size="x-small"

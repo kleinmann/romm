@@ -31,7 +31,7 @@ export type ListSortKey = Extract<
 export interface ListColumn {
   /** Sort key (matches `galleryRoms.orderBy`). `null` for non-sortable
    * display-only columns (icon labels, action menus). */
-  key: ListSortKey | "select" | "cover" | "languages" | "regions" | "actions";
+  key: ListSortKey | "select" | "cover" | "genres" | "languages" | "regions" | "actions";
   /** Column header label. Empty string renders no text (used for the
    * leading select column + trailing actions column). */
   label: string;
@@ -103,6 +103,13 @@ export function getListColumns(showPlatform: boolean): readonly ListColumn[] {
       skeletonWidth: 40,
     },
     {
+      key: "genres",
+      label: "Genres",
+      sortable: false,
+      align: "start",
+      skeletonWidth: 80,
+    },
+    {
       key: "languages",
       label: "Languages",
       sortable: false,
@@ -125,7 +132,7 @@ export function getListColumns(showPlatform: boolean): readonly ListColumn[] {
 // natural min-width (below) derive from the same numbers.
 const LIST_SELECT_TRACK_PX = 36;
 const LIST_PLATFORM_TRACK_PX = 200;
-const LIST_METRIC_TRACKS_PX = [88, 96, 84, 56, 72, 110, 110, 88];
+const LIST_METRIC_TRACKS_PX = [88, 96, 84, 56, 72, 110, 110, 88, 88];
 /** Minimum width of the title column so it stays readable when the row is
  *  scrolled horizontally on a narrow viewport (instead of collapsing to 0). */
 export const LIST_TITLE_MIN_PX = 200;

@@ -76,7 +76,7 @@ const gridStyle = computed(() => ({
       </div>
 
       <div
-        v-else-if="col.key === 'languages' || col.key === 'regions'"
+        v-else-if="col.key === 'genres' || col.key === 'languages' || col.key === 'regions'"
         class="r-glr-skel__cell"
       >
         <div class="r-glr-skel__pills">
